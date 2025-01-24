@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Header.css";
 import logo from "../../../images/logo.svg";
 import menu from "../../../images/icon-hamburger.svg";
+import close from "../../../images/icon-close.svg";
 import arrowLight from "../../../images/icon-arrow-light.svg";
 import arrowDark from "../../../images/icon-arrow-dark.svg";
 function Header() {
@@ -12,7 +13,7 @@ function Header() {
       <div className="top-header">
         <div className="logo-img">
           <img src={logo} alt="" />
-          <HamburgerButton onClick={handleToggleMenu}/>
+          <HamburgerButton isActive={isShown} onClick={handleToggleMenu}/>
         </div>
         <div className= {`nav-bar ${isShown ? "show" : ""}`}>
           <div className="left-sect">
@@ -95,10 +96,12 @@ function Button({ text, onClick, extraStyle }) {
 
 // hamburger button
 
-function HamburgerButton({ onClick }) {
+function HamburgerButton({isActive, onClick }) {
   return (
     <button className="hamburger-btn" onClick={onClick}>
-       <img src={menu} alt="hamburger" />
+       <img src={
+        isActive? close : menu
+       } alt="hamburger" />
     </button>
   );
 }
